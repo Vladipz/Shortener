@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortener.API", "Shortener.API\Shortener.API.csproj", "{3CC44DCD-1F4C-44AE-9FC7-6A84156714D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortener.BLL", "Shortener.BLL\Shortener.BLL.csproj", "{5A17759A-C769-491E-917E-0EAC3E5C1EA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortener.DAL", "Shortener.DAL\Shortener.DAL.csproj", "{F09F81E1-AC8F-46A4-84D3-0106A25D3C1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CC44DCD-1F4C-44AE-9FC7-6A84156714D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CC44DCD-1F4C-44AE-9FC7-6A84156714D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CC44DCD-1F4C-44AE-9FC7-6A84156714D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CC44DCD-1F4C-44AE-9FC7-6A84156714D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A17759A-C769-491E-917E-0EAC3E5C1EA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A17759A-C769-491E-917E-0EAC3E5C1EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A17759A-C769-491E-917E-0EAC3E5C1EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A17759A-C769-491E-917E-0EAC3E5C1EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F09F81E1-AC8F-46A4-84D3-0106A25D3C1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F09F81E1-AC8F-46A4-84D3-0106A25D3C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F09F81E1-AC8F-46A4-84D3-0106A25D3C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F09F81E1-AC8F-46A4-84D3-0106A25D3C1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
