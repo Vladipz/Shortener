@@ -42,7 +42,6 @@ bld/
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/
-
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
@@ -460,6 +459,9 @@ Temporary Items
 Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
+
+# database Files
+*.db
 
 # Dump file
 *.stackdump
