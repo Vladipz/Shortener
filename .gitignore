@@ -462,7 +462,8 @@ ehthumbs_vista.db
 
 # database Files
 *.db
-
+*.db-shm
+*.db-wal
 # Dump file
 *.stackdump
 
