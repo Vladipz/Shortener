@@ -1,0 +1,49 @@
+<div class="mx-auto max-w-md rounded-lg border bg-white p-6 shadow-md">
+  <h2 class="mb-4 text-xl font-semibold">Створіть коротке посилання</h2>
+
+ <form [formGroup]="urlForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label for="originalUrl" class="block text-sm font-medium text-gray-700">
+        Довге посилання
+      </label>
+      <input
+        id="originalUrl"
+        formControlName="originalUrl"
+        type="text"
+        placeholder="Введіть довге посилання"
+        class="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <div
+        *ngIf="
+          urlForm.get('originalUrl')?.invalid &&
+          urlForm.get('originalUrl')?.touched
+        "
+        class="mt-1 text-xs text-red-600"
+      >
+        Введіть коректне посилання.
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="urlForm.invalid"
+      class="w-full rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none disabled:bg-gray-300"
+    >
+      Створити коротке посилання
+    </button>
+  </form>
+
+  <div
+    *ngIf="shortenedUrl"
+    class="mt-4 rounded-md border border-gray-200 bg-gray-50 p-4"
+  >
+    <h3 class="font-medium">Ваше коротке посилання:</h3>
+    <a
+      [href]="shortenedUrl"
+      target="_blank"
+      class="text-blue-500 hover:underline"
+    >
+      {{ shortenedUrl }}
+    </a>
+  </div>
+</div>
