@@ -22,10 +22,6 @@ namespace Shortener.DAL.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ShortUrl>()
-                .HasIndex(static s => s.ShortenedUrl)
-                .IsUnique();
-
-            builder.Entity<ShortUrl>()
                 .HasOne(static s => s.CreatedBy)
                 .WithMany(static u => u!.ShortUrls)
                 .HasForeignKey(static s => s.CreatedById)

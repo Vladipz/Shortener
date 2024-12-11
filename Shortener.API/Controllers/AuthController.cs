@@ -87,5 +87,11 @@ namespace Shortener.API.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            return Ok("Test");
+        }
     }
 }

@@ -30,15 +30,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUrlService, UrlService>();
 builder.Services.AddScoped<DbInitializer>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<UserCreateValidator>();
 
 builder.Services.AddDbContext<ShortenerDbContext>(options =>
 {
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
     // TODO: add interceptor for setting CreatedAt and UpdatedAt
 });
@@ -75,7 +77,21 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorizationBuilder()
     .AddPolicy("UserAndAbove", policy => policy.RequireRole("User", "Admin"));
 
+// Додати CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+
+// Використати CORS
+app.UseCors("AllowAll");
 
 try
 {
@@ -104,5 +120,12 @@ app.UseAuthorization();
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    Console.WriteLine("Migrating database...");
+    var db = scope.ServiceProvider.GetRequiredService<ShortenerDbContext>();
+    db.Database.Migrate();
+}
 
 app.Run();
