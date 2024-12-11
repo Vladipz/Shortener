@@ -93,19 +93,6 @@ var app = builder.Build();
 // Використати CORS
 app.UseCors("AllowAll");
 
-try
-{
-    using var scope = app.Services.CreateScope();
-
-    // Ініціалізація бази даних
-    var dbInitializer = scope.ServiceProvider.GetRequiredService<DbInitializer>();
-    await dbInitializer.SeedAdminAsync();
-    await dbInitializer.SeedUserRoleAsync();
-}
-catch (InvalidOperationException e)
-{
-    app.Logger.LogError(e, "Failed to seed the database: {ExceptionMessage}", e.Message);
-}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -123,9 +110,22 @@ app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
 {
-    Console.WriteLine("Migrating database...");
     var db = scope.ServiceProvider.GetRequiredService<ShortenerDbContext>();
     db.Database.Migrate();
+}
+
+try
+{
+    using var scope = app.Services.CreateScope();
+
+    // Ініціалізація бази даних
+    var dbInitializer = scope.ServiceProvider.GetRequiredService<DbInitializer>();
+    await dbInitializer.SeedAdminAsync();
+    await dbInitializer.SeedUserRoleAsync();
+}
+catch (InvalidOperationException e)
+{
+    app.Logger.LogError(e, "Failed to seed the database: {ExceptionMessage}", e.Message);
 }
 
 app.Run();

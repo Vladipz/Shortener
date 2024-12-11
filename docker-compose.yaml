@@ -14,15 +14,15 @@ services:
         condition: service_healthy
 
 
-  # frontend:
-  #   build:
-  #     context: ./Shortener.Web # Встановлюємо правильний контекст для фронтенду
-  #     dockerfile:  ./Dockerfile  # Шлях до Dockerfile для фронтенду
-  #   ports:
-  #     - "4200:4200"  # Порт для фронтенду
-  #   depends_on:
-  #     - backend  # Фронтенд залежить від бекенду
-  #
+  frontend:
+    build:
+      context: ./Shortener.Web # Встановлюємо правильний контекст для фронтенду
+      dockerfile:  ./Dockerfile  # Шлях до Dockerfile для фронтенду
+    ports:
+      - "4200:4200"  # Порт для фронтенду
+    depends_on:
+      - backend  # Фронтенд залежить від бекенду
+
   ms-sql:
     container_name: ms-sql
     image: mcr.microsoft.com/mssql/server:2019-latest
